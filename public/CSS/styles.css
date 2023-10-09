@@ -4,21 +4,34 @@ body{
     color: #ccc;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: medium;
+    margin: 2em;
 }
 
 h1{
     text-align: center;
 }
-.nav{
+.nav-div{
     display: flex;
-    gap: 4em;
+    gap: 1em;
+    flex-direction: row;
+    margin: 1em auto;
+    text-align: center;
 }
 .logo > img{
     max-width: 5em;
 }
 .nav-div > .actions{
-
+    text-align: center;
+    margin: auto;
 }
+
+.nav-div > .actions > a{
+    color: #f1f1f1;
+    margin: .8em;
+    font-weight: bolder;
+    text-decoration: dotted;
+}
+
 .signup-form-div,
 .login-form-div {
     border: 3px solid #ccc;
@@ -45,4 +58,54 @@ input[type="submit"] {
     font-size: 1.1rem;
     color: #f1f1f1;
     padding: 10px; 
+    cursor: pointer;
+}
+
+.post-form{
+    margin: 1em auto;
+    max-width: 450px;
+    align-items: center;
+}
+
+textarea{
+    width: 100%;
+    margin-top: 1em;
+}
+
+.draft-publish,
+.add-things{
+    display: flex;
+    flex-direction: row;
+    max-width: 450px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin: 1em auto;
+}
+
+.add-things{
+    max-width: 100%;
+}
+
+.draft-publish > input,
+.draft-publish > .back{
+    max-width: fit-content;
+    margin: 1em auto;
+}
+
+.draft-publish > .back{
+    background-color: rgb(58, 15, 3);
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.add-things > input{
+    max-width: fit-content;
+    margin: 1em auto;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+.mov{
+    color: blueviolet;
 }

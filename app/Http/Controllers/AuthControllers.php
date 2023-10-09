@@ -18,13 +18,14 @@ class AuthControllers extends Controller
         // Validate the form data
         $inputs = $request->validate([
             'email' => ['Required', 'email'],
-            'password' => ['Required', 'password', 'min:8', 'max128'],
+            'password' => ['Required']
         ]);
 
-        // Perform login logic here...
-        
+        if (auth()->attempt(['email' => $inputs['email'], 'password' => $inputs['password']])) {
+            session()->regenerate();
+        }
 
-        // Redirect to a success page or return a response
+        return redirect('/');
     }
 
     public function showSignupForm()
@@ -38,7 +39,7 @@ class AuthControllers extends Controller
         $inputs = $request->validate([
             'name' => ['Required', 'min:3', 'max:30'],
             'email' => ['Required', 'email'],
-            'password' => ['Required', 'password', 'min:8', 'max128'],
+            'password' => ['Required', 'min:8', 'max:128']
         ]);
 
         $inputs['password'] = bcrypt($inputs['password']);
@@ -46,10 +47,15 @@ class AuthControllers extends Controller
         $user = User::create($inputs);
 
         if ($user) {
-            auth()->id();
+            auth()->login($user);
         }
 
-        // Redirect to a success page or return a response
-        return 'You\'ve loggin';
+        return redirect('/');
+    }
+
+    public function loggout(){
+        auth()->logout();
+
+        return redirect('/');
     }
 }
